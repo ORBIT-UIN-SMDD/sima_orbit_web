@@ -8,9 +8,9 @@
 =========================================================
  -->
 
- <!-- CARI APA BRO ?? -->
+<!-- CARI APA BRO ?? -->
 
- 
+
 <!-- beautify ignore:start -->
 <html
   lang="en"
@@ -67,6 +67,7 @@
     <!--! Template customizer & Theme config files MUST be included after core stylesheets and helpers.js in the <head> section -->
     <!--? Config:  Mandatory theme config file contain global vars & default theme options, Set your preferred theme option in this file.  -->
     <script src="<?= base_url() ?>/assets/js/config.js"></script>
+
   </head>
 
   <body>
@@ -410,6 +411,23 @@
       $(document).ready(function() {
           $('#example').DataTable();
       });
+    </script>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script>
+      function ImgPreview() {
+        const thumb = document.querySelector('#thumb')
+        const imgPreview = document.querySelector('.img-preview')
+  
+        const fileThumb = new FileReader();
+        fileThumb.readAsDataURL(thumb.files[0])
+  
+        fileThumb.onload = function(e){
+          imgPreview.src = e.target.result
+        }
+      }
+
     </script>
 
   </body>

@@ -11,60 +11,10 @@
                 <!-- <a href="#" data-bs-target="#backDropModal" class="btn btn-primary mb-3">
                     <span class="tf-icons bx bx-book-add"></span>&nbsp; Tambah User
                 </a> -->
-                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#backDropModal">
+                <a type="button" class="btn btn-primary" href="/anggota/tambah">
                     <span class="tf-icons bx bx-book-add"></span>&nbsp; Tambah Data Anggota
-                </button>
-                <!-- FOR MODALS -->
-                <div class="modal fade" id="backDropModal" data-bs-backdrop="static" tabindex="-1" style="display: none;" aria-hidden="true">
-                    <div class="modal-dialog">
-                        <form class="modal-content" action="/user/newUser" method="post">
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="backDropModalTitle">Tambah Data Alumni</h5>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                            </div>
-                            <div class="modal-body">
-                                <div class="row mt-3">
-                                    <div class="col mb-3">
-                                        <label for="nameBackdrop" class="form-label">RFID</label>
-                                        <div class="input-group">
-                                            <input type="text" class="form-control" placeholder="Enter RFID" id="inputrfid" name="rfid">
-                                            <button class="btn btn-outline-primary" type="button" id="scanAjax">Scan</button>
-                                            <button class="btn btn-outline-primary" type="button" id="clearAjax">Clear</button>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col mb-3">
-                                        <label for="nameBackdrop" class="form-label">Name</label>
-                                        <input type="text" id="name" class="form-control" placeholder="Enter Name" name="nama">
-                                    </div>
-                                </div>
-                                <div class="row g-2">
-                                    <div class="col mb-0">
-                                        <label for="emailBackdrop" class="form-label">Email</label>
-                                        <input type="text" id="email" class="form-control" placeholder="Enter Email" name="email">
-                                    </div>
-                                    <div class="col mb-0">
-                                        <label for="phoneBackdrop" class="form-label">No. HP</label>
-                                        <input type="text" id="phone" class="form-control" placeholder="Enter Phone Number" name="phone">
-                                    </div>
-                                </div>
-                                <div class="row mt-3">
-                                    <div class="col mb-3">
-                                        <label for="tokenBackdrop" class="form-label">Token Telegram</label>
-                                        <input type="text" id="token" class="form-control" placeholder="Enter Token Telegram" name="token">
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">
-                                    Close
-                                </button>
-                                <button type="submit" class="btn btn-primary">Save</button>
-                            </div>
-                        </form>
-                    </div>
-                </div>
+                </a>
+
             </div>
             <div class="card-body">
                 <table id="example" class="table table-bordered" style="width:100%">
@@ -92,18 +42,98 @@
                                 <td>
                                     <div class="btn-group" role="group" aria-label="First group">
 
-                                        <a type="button" class="btn btn-outline-secondary">
+                                        <a type="button" class="btn btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#largeModal<?= $item["nim"] ?>">
                                             <i class='bx bx-info-circle'></i>
                                         </a>
                                         <a type="button" class="btn btn-outline-secondary">
                                             <i class='tf-icons bx bxs-edit'></i>
                                         </a>
-                                        <a type="button" href="/admin/delete/<?= $item["nim"] ?>" class="btn btn-outline-secondary">
+                                        <a type="button" href="/anggota/delete/<?= $item["nim"] ?>" class="btn btn-outline-secondary">
                                             <i class='tf-icons bx bx-trash'></i>
                                         </a>
                                     </div>
                                 </td>
                             </tr>
+                            <!-- MODAL FOR VIEW -->
+                            <div class="modal fade" id="largeModal<?= $item["nim"] ?>" tabindex="-1" aria-hidden="true">
+                                <div class="modal-dialog modal-lg" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLabel3">Modal title</h5>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <div class="row align-items-center">
+                                                <div class="col-md-4 col-4 mb-3">
+                                                    <img src="https://sima.orbituinbkt.com/profile/anggota/<?= $item["foto"] ?>" class="rounded" alt="" width="180" height="180" style="object-fit: cover;">
+                                                </div>
+                                                <div class=" col-md-8">
+                                                    <h2 class="fs-5 fw-bold"><?= $item["nama"] ?></h2>
+                                                    <h5 class="text-muted">ID. <?= $item["nim"] ?></h5>
+                                                </div>
+                                            </div>
+
+                                            <div class="row mb-2">
+                                                <label class=" col-sm-3 col-form-label" for="basic-default-name">Status Pengurus</label>
+                                                <div class="col-sm-9">
+                                                    <input type="text" class="form-control" id="basic-default-company" value=" <?= $item["active"] == 1 ? "Aktif" : "Non Aktif" ?>" readonly>
+
+                                                </div>
+                                            </div>
+                                            <div class="row mb-2">
+                                                <label class="col-sm-3 col-form-label" for="basic-default-name">Tempat, Tanggal Lahir</label>
+                                                <div class="col-sm-9">
+                                                    <input type="text" class="form-control" id="basic-default-company" value="<?= $item["tempat_lahir"] ?>, <?= $item["tanggal_lahir"] ?>" readonly>
+                                                </div>
+                                            </div>
+                                            <div class="row mb-2">
+                                                <label class="col-sm-3 col-form-label" for="basic-default-name">Jenis Kelamin</label>
+                                                <div class="col-sm-9">
+                                                    <input type="text" class="form-control" id="basic-default-company" value="<?= $item["jenis_kelamin"] == 0 ? "Perempuan" : "Laki- Laki" ?>" readonly>
+                                                </div>
+                                            </div>
+                                            <div class="row mb-2">
+                                                <label class="col-sm-3 col-form-label" for="basic-default-name">Alamat</label>
+                                                <div class="col-sm-9">
+                                                    <input type="text" class="form-control" id="basic-default-company" value="<?= $item["alamat"] ?>" readonly>
+                                                </div>
+                                            </div>
+                                            <div class="row mb-2">
+                                                <label class="col-sm-3 col-form-label" for="basic-default-name">Fakultas</label>
+                                                <div class="col-sm-9">
+                                                    <input type="text" class="form-control" id="basic-default-company" value="<?= $item["fakultas_nama"] ?>" readonly>
+                                                </div>
+                                            </div>
+                                            <div class="row mb-2">
+                                                <label class="col-sm-3 col-form-label" for="basic-default-name">Prodi</label>
+                                                <div class="col-sm-9">
+                                                    <input type="text" class="form-control" id="basic-default-company" value="<?= $item["prodi_nama"] ?>" readonly>
+                                                </div>
+                                            </div>
+                                            <div class="row mb-2">
+                                                <label class="col-sm-3 col-form-label" for="basic-default-name">Bidang</label>
+                                                <div class="col-sm-9">
+                                                    <input type="text" class="form-control" id="basic-default-company" value="<?= $item["bidang_nama"] ?>" readonly>
+                                                </div>
+                                            </div>
+                                            <div class="row mb-2">
+                                                <label class="col-sm-3 col-form-label" for="basic-default-name">Email</label>
+                                                <div class="col-sm-9">
+                                                    <input type="text" class="form-control" id="basic-default-company" value="<?= $item["email"] ?>" readonly>
+                                                </div>
+                                            </div>
+                                            <div class="row mb-2">
+                                                <label class="col-sm-3 col-form-label" for="basic-default-name">No Telp</label>
+                                                <div class="col-sm-9">
+                                                    <input type="text" class="form-control" id="basic-default-company" value="<?= $item["no_telp"] ?>" readonly>
+                                                </div>
+                                            </div>
+
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         <?php endforeach ?>
 
                     </tbody>

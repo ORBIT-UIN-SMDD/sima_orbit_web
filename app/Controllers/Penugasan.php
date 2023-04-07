@@ -14,6 +14,6 @@ class Penugasan extends BaseController
             "active" => "penugasan",
             "penugasan" => $penugasan->findAll()
         ];
-        return view("admin/v_penugasan", $config);
+        return view("admin/penugasan/v_penugasan", $config);
     }
 }

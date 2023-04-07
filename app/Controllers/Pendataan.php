@@ -57,7 +57,7 @@ class Pendataan extends BaseController
             "alamat" => "",
             "no_telp" => $this->request->getVar("no_telp"),
             "email" => $this->request->getVar("email"),
-            "password" => $this->request->getVar("nim"),
+            "password" => password_hash($this->request->getVar("nim"), PASSWORD_DEFAULT),
             "periode" => $this->request->getVar("periode"),
             "pekerjaan" => "",
             "golongan_darah" => "",
@@ -128,7 +128,7 @@ class Pendataan extends BaseController
             "bidang_id" => $this->request->getVar("bidang_id"),
             "no_telp" => $this->request->getVar("no_telp"),
             "email" => $this->request->getVar("email"),
-            "password" => $this->request->getVar("nim"),
+            "password" => password_hash($this->request->getVar("nim"), PASSWORD_DEFAULT),
             "periode" => 2023,
             "active" => 1,
         ]);

@@ -19,4 +19,14 @@ class ProdiModel extends Model
 
         return $query;
     }
+
+    public function relasiAnggota()
+    {
+        $query = $this->select('prodi.*, COUNT(anggota.prodi_id) as anggota_count')
+            ->join('anggota', 'anggota.prodi_id = prodi.prodi_id', 'left')
+            ->groupBy('prodi.prodi_id')
+            ->findAll();
+
+        return $query;
+    }
 }
