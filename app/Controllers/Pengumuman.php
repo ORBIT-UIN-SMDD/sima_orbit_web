@@ -16,4 +16,11 @@ class Pengumuman extends BaseController
         ];
         return view('admin/v_pengumuman', $config);
     }
+
+    public function delete($pengumuman_id)
+    {
+        $pengumuman = new PengumumanModel();
+        $pengumuman->delete($pengumuman_id);
+        return redirect()->to("/pengumuman");
+    }
 }
