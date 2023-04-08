@@ -17,7 +17,7 @@
                 <!-- FOR MODALS -->
                 <div class="modal fade" id="backDropModal" data-bs-backdrop="static" tabindex="-1" style="display: none;" aria-hidden="true">
                     <div class="modal-dialog">
-                        <form class="modal-content" action="/user/newUser" method="post">
+                        <form class="modal-content" action="/pengumuman/broadcast" method="post">
                             <div class="modal-header">
                                 <h5 class="modal-title" id="backDropModalTitle">Buat Pengumuman</h5>
                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -26,11 +26,16 @@
 
                                 <div class="row">
                                     <div class="col mb-3">
-                                        <label for="nameBackdrop" class="form-label">Nama Bidang</label>
-                                        <input type="text" id="name" class="form-control" placeholder="Enter Name" name="bidang_nama">
+                                        <label for="nameBackdrop" class="form-label">judul Pengumuman</label>
+                                        <input type="text" id="name" class="form-control" placeholder="Masukkan Judul Pengumuman" name="pengumuman_judul">
                                     </div>
                                 </div>
-
+                                <div class="row">
+                                    <div class="col mb-3">
+                                        <label for="nameBackdrop" class="form-label">deskripsi</label>
+                                        <textarea class="form-control" rows="3" name="pengumuman_deskripsi"></textarea>
+                                    </div>
+                                </div>
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">
@@ -67,7 +72,7 @@
                                 <td>
                                     <div class="btn-group" role="group" aria-label="First group">
 
-                                        <a type="button" href="/admin/delete/<?= $item["pengumuman_id"] ?>" class="btn btn-outline-secondary">
+                                        <a type="button" href="/pengumuman/delete/<?= $item["pengumuman_id"] ?>" class="btn btn-outline-secondary">
                                             <i class='tf-icons bx bx-trash'></i>
                                         </a>
                                     </div>

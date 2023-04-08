@@ -37,6 +37,7 @@ class Dashboard extends BaseController
             "alumni_goldar" => $this->alumni->findAll(),
             "prodi" => $this->prodi->relasiAnggota(),
             "bidang" => $this->bidang->relasiAnggota(),
+            "anggota" => $this->anggota->orderBy("tanggal_mendaftar", "DESC")->limit(7)->findAll(),
             "active" => "dashboard"
         ];
     }

@@ -40,6 +40,7 @@ $routes->get('/pengumuman', 'Pengumuman::index', ['filter' => 'auth']);
 $routes->get('/bidang', 'Bidang::index', ['filter' => 'auth']);
 $routes->get('/fakultas', 'Fakultas::index', ['filter' => 'auth']);
 $routes->get('/prodi', 'Prodi::index', ['filter' => 'auth']);
+$routes->get('/admin', 'Admin::index', ['filter' => 'auth']);
 
 $routes->get('/register', 'RegisterAdmin::index');
 $routes->get('/login', 'LoginAdmin::index');
