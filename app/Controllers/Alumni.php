@@ -3,19 +3,19 @@
 namespace App\Controllers;
 
 use App\Controllers\BaseController;
-use App\Models\AlumniModel;
+use App\Models\UserModel;
 
 class Alumni extends BaseController
 {
     protected $Alumni;
     public function __construct()
     {
-        $this->Alumni = new AlumniModel();
+        $this->Alumni = new UserModel();
     }
     public function index()
     {
 
-        $alumni = $this->Alumni->findAll();
+        $alumni = $this->Alumni->where("tipe", "alumni")->findAll();
         $config = [
             "active" => "keanggotaan",
             "alumni" => $alumni
@@ -60,7 +60,7 @@ class Alumni extends BaseController
         $profile = $this->request->getFile("profile");
         $profile->move("profile/alumni");
 
-        $alumni = new AlumniModel();
+        $alumni = new UserModel();
         $alumni->save([
             "nim" => $this->request->getVar("nim"),
             "foto" => $profile->getName(),

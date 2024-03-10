@@ -7,22 +7,23 @@ use App\Models\AnggotaModel;
 use App\Models\BidangModel;
 use App\Models\FakultasModel;
 use App\Models\ProdiModel;
+use App\Models\UserModel;
 
 class Anggota extends BaseController
 {
     public function index()
     {
-        $anggota = new AnggotaModel();
+        $anggota = new UserModel();
         $config = [
             "active" => "keanggotaan",
-            "anggota" => $anggota->relasi(),
+            "anggota" => $anggota->relasiAnggota(),
         ];
         return view('admin/v_anggota', $config);
     }
 
     public function delete($nim)
     {
-        $anggota = new AnggotaModel();
+        $anggota = new UserModel();
         $anggota->delete($nim);
         return redirect()->to("/anggota");
     }
@@ -64,7 +65,7 @@ class Anggota extends BaseController
         $profile = $this->request->getFile("profile");
         $profile->move("profile/anggota");
 
-        $anggota = new AnggotaModel();
+        $anggota = new UserModel();
         $anggota->save([
             "nim" => $this->request->getVar("nim"),
             "foto" => $profile->getName(),

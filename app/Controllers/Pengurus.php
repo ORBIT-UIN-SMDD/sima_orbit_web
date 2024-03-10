@@ -7,15 +7,16 @@ use App\Models\BidangModel;
 use App\Models\FakultasModel;
 use App\Models\PengurusModel;
 use App\Models\ProdiModel;
+use App\Models\UserModel;
 
 class Pengurus extends BaseController
 {
     public function index()
     {
-        $pengurus = new PengurusModel();
+        $pengurus = new UserModel();
         $config = [
             "active" => "keanggotaan",
-            "pengurus" => $pengurus->relasi(),
+            "pengurus" => $pengurus->relasiPengurus(),
         ];
         // dd($config);
         return view('admin/v_pengurus', $config);
@@ -23,7 +24,7 @@ class Pengurus extends BaseController
 
     public function delete($nim)
     {
-        $pengurus = new PengurusModel();
+        $pengurus = new UserModel();
         $pengurus->delete($nim);
         return redirect()->to("/pengurus");
     }
@@ -66,7 +67,7 @@ class Pengurus extends BaseController
         $profile = $this->request->getFile("profile");
         $profile->move("profile/pengurus");
 
-        $pengurus = new PengurusModel();
+        $pengurus = new UserModel();
         $pengurus->save([
             "nim" => $this->request->getVar("nim"),
             "foto" => $profile->getName(),

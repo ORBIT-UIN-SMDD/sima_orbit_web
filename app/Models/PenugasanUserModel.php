@@ -4,16 +4,17 @@ namespace App\Models;
 
 use CodeIgniter\Model;
 
-class PenugasanAnggotaModel extends Model
+class PenugasanUserModel extends Model
 {
-    protected $table = 'penugasan_anggota';
+    protected $table = 'penugasan_user';
     protected $primaryKey       = 'id';
     protected $useAutoIncrement = true;
     protected $allowedFields = ['id', 'penugasan_id', 'nim', 'bidang_tugas', 'ditambahkan_pada',];
 
-    public function relasiAnggota()
+    public function relasiUser($id)
     {
-        $query = $this->join('anggota', 'anggota.nim = penugasan_anggota.nim')
+        $query = $this->where('penugasan_id', $id)
+            ->join('user', 'user.nim = penugasan_user.nim')
             ->findAll();
 
         return $query;

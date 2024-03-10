@@ -38,7 +38,7 @@
                                 <td><?= $item["jenis_kelamin"] == 0 ? "Perempuan" : "Laki-Laki" ?></td>
                                 <td><?= $item["email"] ?></td>
                                 <td><?= $item["no_telp"] ?> </td>
-                                <td> <?= $item["periode"] ?> </td>
+                                <td> <?= $item["pengurus_periode"] ?> </td>
                                 <td>
                                     <div class="btn-group" role="group" aria-label="First group">
 
@@ -105,19 +105,25 @@
                                             <div class="row mb-2">
                                                 <label class="col-sm-3 col-form-label" for="basic-default-name">Periode</label>
                                                 <div class="col-sm-9">
-                                                    <input type="text" class="form-control" id="basic-default-company" value="<?= $item["periode"] ?>" readonly>
+                                                    <input type="text" class="form-control" id="basic-default-company" value="<?= $item["pengurus_periode"] ?>" readonly>
                                                 </div>
                                             </div>
                                             <div class="row mb-2">
                                                 <label class="col-sm-3 col-form-label" for="basic-default-name">Pekerjaan</label>
                                                 <div class="col-sm-9">
-                                                    <input type="text" class="form-control" id="basic-default-company" value="<?= $item["pekerjaan"] ?>" readonly>
+                                                    <input type="text" class="form-control" id="basic-default-company" value="<?= $item["alumni_pekerjaan"] ?>" readonly>
+                                                </div>
+                                            </div>
+                                            <div class="row mb-2">
+                                                <label class="col-sm-3 col-form-label" for="basic-default-name">Domisili</label>
+                                                <div class="col-sm-9">
+                                                    <input type="text" class="form-control" id="basic-default-company" value="<?= $item["alumni_domisili"] ?>" readonly>
                                                 </div>
                                             </div>
                                             <div class="row mb-2">
                                                 <label class="col-sm-3 col-form-label" for="basic-default-name">Gologan Darah</label>
                                                 <div class="col-sm-9">
-                                                    <input type="text" class="form-control" id="basic-default-company" value="<?= $item["golongan_darah"] ?>" readonly>
+                                                    <input type="text" class="form-control" id="basic-default-company" value="<?= $item["alumni_golongan_darah"] ?>" readonly>
                                                 </div>
                                             </div>
 
